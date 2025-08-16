@@ -5,18 +5,17 @@ metadata:
   namespace: default
 spec:
   components:
-        
-          - name: default-service
-            type: webservice
-            properties:
-              name: default-service
-              image: healthidpuaeacr.azurecr.io/default-service:latest
-              language: python
-              framework: fastapi
-              port: 8080
-              healthPath: /health
-              appContainer: default-service
-              exposeApi: true
+  - name: default-service
+    type: webservice
+    properties:
+      name: default-service
+      image: healthidpuaeacr.azurecr.io/default-service:latest
+      language: python
+      framework: fastapi
+      port: 8080
+      healthPath: /health
+      database: postgres
+      cache: redis
   policies:
   - name: deploy-to-vcluster
     type: topology
