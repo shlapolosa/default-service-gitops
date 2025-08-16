@@ -1,0 +1,25 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: default-service-app
+  namespace: default
+spec:
+  components:
+  - name: default-service
+    type: webservice
+    properties:
+      image: "docker.io/socrates12345/default-service:v1.0.0"
+      port: 8080
+      healthPath: "/health"
+      language: python
+      framework: fastapi
+
+      environment:
+        LOG_LEVEL: "INFO"
+        AGENT_TYPE: "default-service"
+  policies:
+  - name: deploy-to-vcluster
+    type: topology
+    properties:
+      clusters: ["default-service"]
+      namespace: "default"
