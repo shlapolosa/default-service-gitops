@@ -8,7 +8,7 @@ spec:
   - name: default-service
     type: webservice
     properties:
-      image: "docker.io/socrates12345/default-service:v1.0.0"
+      image: docker.io/socrates12345/default-service:90b12c7
       port: 8080
       healthPath: "/health"
       language: python
